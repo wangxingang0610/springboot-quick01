@@ -1,5 +1,6 @@
 package com.study.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,15 @@ public class UserController {
     private Map<String, Object> location;
     private String[] hobbie;
     private List<String> skills;
+
+
+    @Value("${com.config}")
+    private String config;
+
+    @RequestMapping("/method")
+    public String method(){
+        return "配置:" + config;
+    }
 
 
     @RequestMapping("/list")
